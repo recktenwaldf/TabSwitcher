@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="TabSwitcher.widget.TabSwitcher" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+	<name>Tab Switcher</name>
+	<description>Tab Switcher</description>
+
+	<icon>
+	iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAA
+	AOpgAAA6mAAAF3CculE8AAACXlBMVEVauP0Flv4AlP8AlP8AlP8AlP5PtP3w+f/k4+OkpKSfn5+enp6/v7/9/f3x8fGtra2enp6enp6x
+	sbHy8vIElv4AlP8AlP8AlP8AlP8Mmf7H5/93dXMAAAACAgEAAAAhICDd3d2oqKgHBwcBAQEBAQEMDAynp6cAlP8AlP8AlP8AlP8AlP8A
+	lP8Il/+54f56eXgoKiosLS4sLS05OTrW19ikpaYrLCwtLi4tLi4vLy+kpKQAlP8AlP8Ak/8Akv8Akv8Akv8AlP83q/5EqPA9oek+oek/
+	oulBo+pPsfhLrfNBoulCo+lCo+lGpepRsPQAlP8Pmv87rf89rv89rv89rv89rv86rP86rf86rf86rf86rf86rf85rP85rP86rf86rf84
+	rP8Mmv8Akv8Akv89rf7s9//1+//1+//1+//1+//1+//1+//s9/89rf4Akv8Akv8/rv72+//////////////////////////2+/8/rv4A
+	kv8Akv8/rv72+//////////////////2+/8/rv4Akv8Akv8/rv72+//////////////////2+/8/rv4Akv8Akv8/rv72+/////8/rv4A
+	kv8Akv8/rv4/rv4Akv8Akv8/rv72+//////////////////////////2+/8/rv4Akv8Akv89rf7r9v71+v70+v70+v70+v70+v71+v7r
+	9v49rf4Akv8Dlf4Omv46q/09rP08rP08rP08rP08rP09rP06q/0Omv4Dlf5auP0Elf4Akv8Akv8Akv8Akv8Akv8Akv8Akv8Akv8Elf5a
+	uP3///+9wYTeAAAAAWJLR0TJar1nXAAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAAd0SU1FB+AGGRArLCBPbm0AAAEBSURBVBjTY2BgZGJm
+	YWVj5+Dk4ubh5eMXEBQSZhARFWMWl5CUkpaRlZNXUFRSVlFVY1DX0NTS1tHV0zcwNDI2MTUzt7C0YrC2sbWzd3B0cnZxdXP38PTy9vH1
+	Y/APCAwKDgkNC4+IjIqOiY2LT0hMYkhOSU1Lz8jMguHsnNw8hvyCwqLiktIyGC6vqKxiqK6prauvr2+A4cam5haG1rb2js4uBOzu6e1j
+	6J8wcVJnV1c9DHf3TJ7CMHUauuD0GfQzc+as2XPmzpu/AIYXLlq8hGHpsuUrVq5avQaG165bv4Fh46bNW7Zu274Dhnfu2r2HYe++/QcO
+	Hjp8BIaPHjt+AgBrP7owppeqRgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNi0wNi0yNVQxNjo0Mzo0NSswMjowMCFOXHEAAAAldEVYdGRh
+	dGU6bW9kaWZ5ADIwMTYtMDYtMjVUMTY6NDM6NDQrMDI6MDD2ZO95AAAAGHRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjlsM35OAAAA
+	AElFTkSuQmCC
+	</icon>
+
+	<properties>
+		<property key="tabclass" type="string">
+			<caption>Tab class</caption>
+			<category>Behavior</category>
+			<description>The class assigned to the tab container.</description>
+		</property>
+		<property key="tabMicroflow" type="microflow" required="false">
+			<caption>Tab Microflow</caption>
+			<category>Data source</category>
+			<description>Select the Microflow that determines which tab pane to select.</description>
+			<returnType type="Integer"/> 
+		</property>
+		<property key="tabAttribute" type="attribute" required="false">
+            <caption>Tab Attribute</caption>
+            <category>Data source</category>
+            <description>Select the attribute that indicates the tab number. The first tab is indicated as 0.</description> 
+		  <attributeTypes>
+			<attributeType name="Integer"/> 
+			<attributeType name="Long"/> 
+		  </attributeTypes>
+        </property>
+		<property key="enableLogging" type="boolean" defaultValue="false">
+		  <caption>Enable Logging</caption>
+		  <category>Behavior</category>
+		  <description>The boolean can enable/disable logging on this widget for debugging purposes.</description>
+		</property>
+
+	</properties>
+</widget>
