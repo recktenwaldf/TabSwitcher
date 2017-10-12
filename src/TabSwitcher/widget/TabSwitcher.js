@@ -4,15 +4,16 @@
     ========================
 
     @file      : TabSwitcher.js
-    @version   : 1
+    @version   : 1.1.0
     @author    : Ivo Sturm
-    @date      : Tue, 31 May 2016
+    @date      : 12-10-2017
     @copyright : First Consulting
     @license   : Apache v3
 
     Documentation
     ========================
     20160531 - First version includes the usage of an attribute of the context object and a microflow to set the active pane of a tab container.
+	20171012 - Upgrade to Mx 7. No real changes were needed except an upgrade of the package.xml file. Also added generic _logNode variable.
 */
 
 // Required module list. Remove unnecessary modules, you can always get them back from the boilerplate.
@@ -37,6 +38,7 @@ define([
 		_tabContainer : null,
 		_hasStarted : false,
 		_tabIndex : 0,
+		_logNode : "TabSwitcher widget: ",
 		
 		// dojo.declare.constructor is called to construct the widget instance. Implement to initialize non-primitive properties.
 		constructor: function() {
@@ -46,9 +48,7 @@ define([
 			
 			this.source = "";
 			if (this.tabMicroflow && this.tabAttribute){
-				if (this.enableLogging){
-					console.error('TabSwitcher widget ill-configured. Choose either Microflow or Attribute as source');
-				}
+				console.error(this._logNode + "ill-configured. Choose either Microflow or Attribute as source");
 				this.source = 'Error';
 			} else if (this.tabMicroflow) {
 				this.source = 'Microflow';			
@@ -62,7 +62,7 @@ define([
 		update : function(obj, callback) {
 
 			if (this.enableLogging){
-				console.log("TabSwitcher widget: Searching for tab pane index: " + this.tabAttribute);
+				console.log(this._logNode + " Searching for tab pane index: " + this.tabAttribute);
 			}
 			if (obj){
 				this.subscribe({
@@ -75,7 +75,7 @@ define([
 				if (this.contextGUID) {
 					if (this.source === 'Microflow') {
 						if (this.enableLogging){
-							console.log('TabSwitcher widget: Source=Microflow');
+							console.log(this._logNode + " Source=Microflow");
 						}
 						mx.data.action({
 							params: {
@@ -92,8 +92,8 @@ define([
 						}, this);
 					} else if (this.source === 'Attribute') {
 						if (this.enableLogging){
-							console.log('TabSwitcher widget: Source=Attribute');
-							console.log('TabSwitcher widget: AttributeName='+this.tabAttribute);
+							console.log(this._logNode + "Source=Attribute");
+							console.log(this._logNode + "AttributeName="+this.tabAttribute);
 						}
 						var missingAttrs = false, index = 0;
 						if (!obj.has(this.tabAttribute)) {
@@ -102,7 +102,7 @@ define([
 							index = obj.get(this.tabAttribute);
 						}
 						if (this.enableLogging){
-							console.log("TabSwitcher widget: Tab Pane Index: " + this.tabAttribute + (missingAttrs ? " is missing " : "") + " Tab Pane Index value: " + index );
+							console.log(this._logNode + "Tab Pane Index: " + this.tabAttribute + (missingAttrs ? " is missing " : "") + " Tab Pane Index value: " + index );
 						}
 						this.selectTab(index);
 						
@@ -122,14 +122,14 @@ define([
 			if( _tabIndex == null ) 
 				_tabIndex = 0;
 			if (this.enableLogging){
-				console.log("Tabswitcher widget: Searching for tab index: " + _tabIndex);
+				console.log(this._logNode + "Searching for tab index: " + _tabIndex);
 			}
 			
 			if (tablist.length > 0 ) {
 				if( _tabIndex >= tablist.length ) {
 					_tabIndex = tablist.length - 1;
 					if (this.enableLogging){
-						console.debug("TabSwitcher widget: Setting tab index to: " + _tabIndex);
+						console.debug(this._logNode + "Setting tab index to: " + _tabIndex);
 					}
 				}
 				
@@ -143,12 +143,6 @@ define([
 			var tab = this.getTab(index);
 			if (tab) {
 				
-				/*var res = [];
-				for(var m in this._tabContainer) {
-					if(typeof this._tabContainer[m] == "function") {
-						res.push(m)
-					}
-				}*/
 				this._tabContainer.showTab(tab);
 
 			}
