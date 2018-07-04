@@ -48,6 +48,11 @@
 		  <category>Behavior</category>
 		  <description>The boolean can enable/disable logging on this widget for debugging purposes.</description>
 		</property>
+		<property key="triggerOnce" type="boolean" defaultValue="true">
+		  <caption>Trigger only once</caption>
+		  <category>Behavior</category>
+		  <description>If true, the tab switcher will not rerun on updates.</description>
+		</property>
 
 	</properties>
 </widget>

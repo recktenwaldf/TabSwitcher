@@ -34,11 +34,13 @@ define([
 		tabclass : '',
 		tabAttribute : '',
 		tabMicroflow: "",
+		triggerOnce: true,
 		
 		_tabContainer : null,
 		_hasStarted : false,
 		_tabIndex : 0,
 		_logNode : "TabSwitcher widget: ",
+		_triggered : false,
 		
 		// dojo.declare.constructor is called to construct the widget instance. Implement to initialize non-primitive properties.
 		constructor: function() {
@@ -65,6 +67,13 @@ define([
 				console.log(this._logNode + " Searching for tab pane index: " + this.tabAttribute);
 			}
 			if (obj){
+				if ( this.triggerOnce && this._triggered) {
+					// do not update if already triggered and triggerOnce is anebled
+					typeof(callback) == "function" && callback();
+					return;
+				}
+				this._triggered = true;
+				
 				this.subscribe({
 					guid : obj.getGuid(),
 					callback : this.objChanged
